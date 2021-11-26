@@ -50,6 +50,10 @@ navigator.geolocation.getCurrentPosition(
 form.addEventListener('submit',function(e)
 { e.preventDefault()
   // Display the marker
+  // clear input field
+  inputDistance.value  = ''
+  inputDuration.value = ''
+  inputCadence.value = ''
   const {lat:latitude,lng:longitude} = mapEvent.latlng;
     console.log(latitude,longitude)
     L.marker([latitude,longitude])
@@ -63,5 +67,12 @@ form.addEventListener('submit',function(e)
     }))
     .setPopupContent("Workout")
     .openPopup()
+
+})
+
+inputType.addEventListener("change",function()
+{
+  inputElevation.closest('.form__row').classList.toggle('form__row--hidden')
+  inputCadence.closest(".form__row").classList.toggle('form__row--hidden')
 
 })
